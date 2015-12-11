@@ -12,10 +12,7 @@ print "Domain: "
 domain = gets.chomp
 
 image = domain + ".png"
-
-unless File.exists?(image)
-  `phantomjs screen_capture.js #{domain}`
-end
+`phantomjs screen_capture.js #{domain}` unless File.exists?(image)
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ENV['CONSUMER_KEY']
