@@ -8,11 +8,14 @@ require 'twitter'
 print "Status: "
 status = gets.chomp
 
-print "Domain: "
-domain = gets.chomp
+print "URL: "
+url = gets.chomp
 
-image = domain + ".png"
-`phantomjs screen_capture.js #{domain}` unless File.exists?(image)
+print "File Name: "
+file_name = gets.chomp
+
+image = file_name + ".png"
+`phantomjs screen_capture.js #{url} #{file_name}` unless File.exists?(image)
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ENV['CONSUMER_KEY']

@@ -3,12 +3,12 @@
 
 var args = require('system').args;
 var page = require('webpage').create();
-var domain = args[1];
-var url = 'http://' + domain;
+var url = args[1];
+var fileName = args[2];
 
 console.log('capturing url: ' + url);
 page.open(url, function() {
-  page.render(domain + '.png');
+  page.render(fileName + '.png');
   phantom.exit();
 });
 
